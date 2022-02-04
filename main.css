@@ -73,22 +73,24 @@ body {
   margin             : auto;
   font-family        : 'Supermercado One', sans-serif;
   transition-duration: .3s;
+  margin-bottom      : 30px;
 }
 
 #btn:hover {
-  background-color   : tomato;
+  background-color   : #FC6D90;
   transition-duration: .3s;
+  transform          : scale(1.04);
 }
 
 .un-triggered {
-  background-color: #705E78;
+  background-color: #B03A58;
 }
 
 .triggered {
 
-  background-color   : tomato;
+  background-color   : #FC6D90;
   transition-duration: .3s;
-
+  transform          : scale(1.04);
 }
 
 #btn-text {
@@ -132,15 +134,32 @@ body {
   margin     : 5px;
 }
 
-.list-item-filled {
-  background-color: rgb(76, 124, 119);
-
+.one-ago {
+  background-color: #B03A58
 }
+
+@keyframes scaling {
+  0% {
+    transform: scale(1.0)
+  }
+
+  50% {
+    transform: scale(1.4)
+  }
+
+  100% {
+    transform: scale(1.0)
+  }
+}
+
 
 .recent-color {
-  background-color: rgb(202, 97, 48);
+  background-color: #ffa7bd;
+  animation       : scaling 1s;
+  z-index         : 10;
+
 }
 
-.light-color-2 {
-  background-color: rgb(121, 128, 82);
+.two-ago {
+  background-color: #4394B0
 }

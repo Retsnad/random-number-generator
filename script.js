@@ -22,9 +22,11 @@ function volumeSwap() {
   if (audioToggle == true) {
     volumeIcon.src = 'images/sound_off.svg';
     audioToggle = false;
+    console.log('sound is off');
   } else if (audioToggle == false) {
     volumeIcon.src = 'images/sound_on.svg';
     audioToggle = true;
+    console.log('sound is on');
   }
 }
 
@@ -88,7 +90,7 @@ function filledInModeSetup() {
 let mostRecent = 0;
 
 function fillNumber() {
-  newNumber();
+  let result = getRandomInt(1, 67);
   //if result isn't in the usedNumber array
   if (usedNumbers.indexOf(result) === -1) {
     usedNumbers.push(result);
@@ -96,29 +98,24 @@ function fillNumber() {
     generatedNumber.innerHTML = result;
     mostRecent = usedNumbers.slice(-1);
     document.getElementById('li' + String(mostRecent)).classList.add('recent-color');
-
-    console.log(`I'm the Most Recent Number : ${mostRecent}`);
-    console.log(mostRecent);
-
-    console.log(`I'm the index of result: ${usedNumbers.indexOf(result)}`);
-
     let previousNumber = document.getElementById('li' + String(usedNumbers[usedNumbers.length - 2]));
-    console.log(previousNumber);
+    let twoAgo = document.getElementById('li' + String(usedNumbers[usedNumbers.length - 3]));
 
-    previousNumber.classList.replace('recent-color', 'list-item-filled');
+    if (usedNumbers.length >= 2) {
+      previousNumber.classList.replace('recent-color', 'one-ago');
+    }
+
+    document.getElementById('li' + String(mostRecent)).classList.add('triggered');
+
+    btn.blur();
+    if (audioToggle == true) {
+      playAudio(bing);
+    }
   }
-
-  btn.blur();
-  if (audioToggle == true) {
-    playAudio(bing);
-  }
-
   // if result exists in the usedNumers array
   else if (usedNumbers.indexOf(result) > -1 && usedNumbers.length <= 65) {
     console.log(`${result} was already called`);
     fillNumber();
-    document.getElementById('li' + result).classList.add('list-item-filled');
-    document.getElementById('li' + result).classList.remove('recent-color');
   } else {
     generatedNumber.innerHTML = 'Game Over!';
     document.getElementById('btn-text').innerHTML = 'restart';
@@ -137,9 +134,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function newNumber() {
-  result = getRandomInt(1, 67);
-}
+// function newNumber() {
+//   result = getRandomInt(1, 67);
+// }
 
 //Audio Function
 function playAudio(sfx) {
@@ -151,6 +148,7 @@ function playAudio(sfx) {
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32 && toggle == true) {
     fillNumber();
+
     if (audioToggle == true) {
       playAudio(bing);
     }
