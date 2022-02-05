@@ -6,6 +6,12 @@ const hiddenModeBtn = document.getElementById('hidden-mode');
 const confettiEffect = document.getElementById('my-canvas');
 const volumeWrapper = document.getElementById('volume-wrapper');
 const volumeIcon = document.getElementById('volume-icon');
+const rangeIcon = document.getElementById('range-icon');
+
+const gameSelector = document.getElementById('game-selector');
+const shortGameBtn = document.getElementById('short-game-btn');
+const mediumGameBtn = document.getElementById('medium-game-btn');
+const longGameBtn = document.getElementById('long-game-btn');
 
 //a soon-to-be array of numbers
 let numbers = [];
@@ -16,6 +22,49 @@ let result = 0;
 let listItem = 0;
 let toggle = false;
 let audioToggle = true;
+
+let gameSize = 0;
+
+shortGameBtn.addEventListener('click', shortGame);
+mediumGameBtn.addEventListener('click', mediumGame);
+longGameBtn.addEventListener('click', longGame);
+
+document.getElementById('close').addEventListener('click', startGame);
+
+function startGame() {
+  if (gameSize == 25) {
+    shortGame();
+    filledInModeSetup();
+  } else if (gameSize == 50) {
+    mediumGame();
+    filledInModeSetup();
+  } else if (gameSize == 75) {
+    longGame();
+    filledInModeSetup();
+  } else {
+    document.getElementById('game-size-warning').classList.toggle('hide');
+  }
+}
+
+function shortGame() {
+  gameSize = 25;
+  shortGameBtn.classList.add('game-size-item-selected');
+  mediumGameBtn.classList.remove('game-size-item-selected');
+  longGameBtn.classList.remove('game-size-item-selected');
+}
+
+function mediumGame() {
+  gameSize = 50;
+  shortGameBtn.classList.remove('game-size-item-selected');
+  mediumGameBtn.classList.add('game-size-item-selected');
+  longGameBtn.classList.remove('game-size-item-selected');
+}
+function longGame() {
+  gameSize = 75;
+  shortGameBtn.classList.remove('game-size-item-selected');
+  mediumGameBtn.classList.remove('game-size-item-selected');
+  longGameBtn.classList.add('game-size-item-selected');
+}
 
 //volume button stuff
 function volumeSwap() {
@@ -33,17 +82,17 @@ function volumeSwap() {
 volumeWrapper.addEventListener('click', volumeSwap);
 btn.addEventListener('click', filledInModeSetup);
 
-for (i = 1; i <= 66; i++) {
-  numbers.push(i);
-  listItem = document.createElement('li');
-  calledList.appendChild(listItem);
-  listItem.classList.add('list-item');
-  listItem.innerHTML = i;
-  listItem.id = 'li' + i;
-}
-
 //filled mode stuff
 function filledInModeSetup() {
+  for (i = 1; i <= gameSize; i++) {
+    numbers.push(i);
+    listItem = document.createElement('li');
+    calledList.appendChild(listItem);
+    listItem.classList.add('list-item');
+    listItem.innerHTML = i;
+    listItem.id = 'li' + i;
+  }
+  gameSelector.classList.toggle('hide');
   if (toggle == false) {
     if (!confettiEffect.classList.contains('hide')) {
       confettiEffect.classList.toggle('hide');
@@ -60,7 +109,7 @@ function filledInModeSetup() {
       playAudio(start);
     }
 
-    for (i = 1; i <= 66; i++) {
+    for (i = 1; i <= gameSize; i++) {
       numbers.push(i);
       listItem = document.createElement('li');
       calledList.appendChild(listItem);
@@ -75,7 +124,7 @@ function filledInModeSetup() {
     btn.addEventListener('click', fillNumber);
     btn.removeEventListener('click', filledInModeSetup);
 
-    for (i = 1; i <= 67; i++) {
+    for (i = 1; i <= gameSize; i++) {
       numbers.push(i);
       listItem = document.createElement('li');
       calledList.appendChild(listItem);
@@ -90,7 +139,7 @@ function filledInModeSetup() {
 let mostRecent = 0;
 
 function fillNumber() {
-  let result = getRandomInt(1, 67);
+  let result = getRandomInt(1, gameSize);
   //if result isn't in the usedNumber array
   if (usedNumbers.indexOf(result) === -1) {
     usedNumbers.push(result);
@@ -113,16 +162,18 @@ function fillNumber() {
     }
   }
   // if result exists in the usedNumers array
-  else if (usedNumbers.indexOf(result) > -1 && usedNumbers.length <= 65) {
+  else if (usedNumbers.indexOf(result) > -1 && usedNumbers.length <= gameSize - 2) {
     console.log(`${result} was already called`);
     fillNumber();
   } else {
+    console.log('game over!');
     generatedNumber.innerHTML = 'Game Over!';
     document.getElementById('btn-text').innerHTML = 'restart';
     btn.addEventListener('click', filledInModeSetup);
     btn.removeEventListener('click', fillNumber);
     toggle = false;
     confettiEffect.classList.toggle('hide');
+    gameSize = 0;
   }
   return;
 }
@@ -133,10 +184,6 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 }
-
-// function newNumber() {
-//   result = getRandomInt(1, 67);
-// }
 
 //Audio Function
 function playAudio(sfx) {
