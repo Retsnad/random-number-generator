@@ -6,6 +6,12 @@ const hiddenModeBtn = document.getElementById('hidden-mode');
 const confettiEffect = document.getElementById('my-canvas');
 const volumeWrapper = document.getElementById('volume-wrapper');
 const volumeIcon = document.getElementById('volume-icon');
+const rangeIcon = document.getElementById('range-icon');
+
+const gameSelector = document.getElementById('game-selector');
+const shortGameBtn = document.getElementById('short-game-btn');
+const mediumGameBtn = document.getElementById('medium-game-btn');
+const longGameBtn = document.getElementById('long-game-btn');
 
 //a soon-to-be array of numbers
 let numbers = [];
@@ -16,6 +22,19 @@ let result = 0;
 let listItem = 0;
 let toggle = false;
 let audioToggle = true;
+
+let gameSize = 0;
+
+shortGameBtn.addEventListener('click', shortGame);
+rangeIcon.addEventListener('click', chooseGame);
+
+function chooseGame() {
+  gameSelector.classList.toggle('hide');
+}
+
+function shortGame() {
+  gameSize = 25;
+}
 
 //volume button stuff
 function volumeSwap() {

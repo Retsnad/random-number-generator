@@ -12,14 +12,36 @@
 <body>
   <div class="options">
     <div class="volume" id="volume-wrapper">
-      <img id="volume-icon" src="images/sound_on.svg" alt="">
+      <img class="option-icons" id="volume-icon" src="images/sound_on.svg" alt="">
     </div>
-    <form   class="range-wrapper">
-      <input id="range" type="number" >
-      <button id="submit-btn"type="submit" value="Send">submit</button>
-    </form>
 
+    <div class="range">
+      <img class="option-icons" id="range-icon" src="images/range.svg" alt="">
+    </div>
   </div>
+
+
+  <div class="range-selector-wrapper hide" id="game-selector">
+    <div class="range-selector">
+      <h1>Choose your game size</h1>
+      <ul id="game-size-list">
+        <li class="game-size-item" id="short-game-btn">
+          <h3>25</h3>
+          <p>numbers</p>
+        </li>
+        <li class="game-size-item" id="medium-game-btn">
+          <h3>50</h3>
+          <p>numbers</p>
+        </li>
+        <li class="game-size-item" id="long-game-btn">
+          <h3>75</h3>
+          <p>numbers</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
   <div class="main-wrapper">
     <!-- <h2 id="title-text">The Number Is:</h2> -->
     <h1 id="generated-number">0</h1>
