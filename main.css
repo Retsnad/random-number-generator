@@ -82,7 +82,7 @@ body {
   text-align: center;
 }
 
-#close {
+#confirm {
   font-size: 2rem;
   font-family: 'Supermercado One',
     sans-serif;
@@ -97,7 +97,7 @@ body {
   transition-duration: .3s;
 }
 
-#close:hover {
+#confirm:hover {
   background-color   : #FC6D90;
   transform          : scale(1.1);
   transition-duration: .3s;
@@ -115,7 +115,7 @@ body {
 .game-size-item {
   border             : 5px white solid;
   list-style         : none;
-  width              : 160px;
+  width              : 120px;
   height             : 80px;
   padding            : 20px;
   margin             : 20px;
@@ -149,6 +149,13 @@ body {
   font-family: 'Supermercado One',
     sans-serif;
 }
+.game-size-item h4 {
+  margin   : 0;
+  font-size: 2rem;
+  font-family: 'Supermercado One',
+    sans-serif;
+   
+}
 
 .game-size-item p {
   margin: 0;
@@ -157,6 +164,23 @@ body {
   font-size: 1.5rem;
 }
 
+#number-input { 
+  width:80px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-family: 'Supermercado One',
+  sans-serif;
+  border: solid;
+  outline: none;
+  
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#number-input::-webkit-inner-spin-button { 
+  appearance: none;
+}
 
 .main-wrapper {
   display        : flex;
@@ -235,7 +259,7 @@ body {
   flex-wrap      : wrap;
   justify-content: center;
   text-align     : center;
-
+  padding-bottom: 30px;
 }
 
 .sub-text {
@@ -254,6 +278,8 @@ body {
   padding    : 10px;
   border     : solid 2px white;
   margin     : 5px;
+  /* border-radius: 50%; */
+  
 }
 
 .one-ago {
@@ -279,7 +305,6 @@ body {
   background-color: #ffa7bd;
   animation       : scaling 1s;
   z-index         : 10;
-
 }
 
 .two-ago {

@@ -22,16 +22,17 @@ let result = 0;
 let listItem = 0;
 let toggle = false;
 let audioToggle = true;
-
 let gameSize = 0;
+
 
 shortGameBtn.addEventListener('click', shortGame);
 mediumGameBtn.addEventListener('click', mediumGame);
 longGameBtn.addEventListener('click', longGame);
 
-document.getElementById('close').addEventListener('click', startGame);
+document.getElementById('confirm').addEventListener('click', startGame);
 
 function startGame() {
+
   if (gameSize == 25) {
     shortGame();
     filledInModeSetup();
@@ -41,9 +42,18 @@ function startGame() {
   } else if (gameSize == 75) {
     longGame();
     filledInModeSetup();
-  } else {
-    document.getElementById('game-size-warning').classList.toggle('hide');
-  }
+  } 
+  else {  
+    if(document.getElementById('number-input').value > 10) {
+      gameSize = document.getElementById('number-input').value;
+      filledInModeSetup();}
+      else {
+        document.getElementById('game-size-warning').classList.toggle('hide');
+      }
+    }
+  
+  
+
 }
 
 function shortGame() {
