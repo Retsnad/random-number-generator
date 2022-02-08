@@ -326,6 +326,7 @@ body {
     text-align     : center;
     margin         : auto;
     width          : 96vw;
+
   }
 
   #called-list {
@@ -335,15 +336,14 @@ body {
     flex-wrap      : wrap;
     justify-content: center;
     text-align     : center;
-    padding-bottom : 20px;
-
-    margin-top: -50px;
+    padding-bottom : 0px;
+    margin-top     : -40px;
   }
 
   .list-item {
 
-    width     : 10px;
-    height    : 10px;
+    width     : 12px;
+    height    : 12px;
     list-style: none;
     color     : white;
     font-size : 1rem;
@@ -392,7 +392,7 @@ body {
   }
 
   .game-size-item h3 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   #game-size-list {
@@ -404,7 +404,9 @@ body {
   }
 
   .btn-wrapper {
-    padding-top: 10%;
+    padding-top: 0px;
+    bottom     : 0px;
+    position   : absolute;
   }
 
 }
