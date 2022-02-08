@@ -149,12 +149,13 @@ body {
   font-family: 'Supermercado One',
     sans-serif;
 }
+
 .game-size-item h4 {
   margin   : 0;
   font-size: 2rem;
   font-family: 'Supermercado One',
     sans-serif;
-   
+
 }
 
 .game-size-item p {
@@ -164,21 +165,21 @@ body {
   font-size: 1.5rem;
 }
 
-#number-input { 
-  width:80px;
-  height: 30px;
-  margin-top: 10px;
+#number-input {
+  width        : 80px;
+  height       : 30px;
+  margin-top   : 10px;
   border-radius: 10px;
-  font-family: 'Supermercado One',
-  sans-serif;
-  border: solid;
+  font-family  : 'Supermercado One',
+    sans-serif;
+  border : solid;
   outline: none;
-  
-  font-size: 1.3rem;
+
+  font-size : 1.3rem;
   text-align: center;
 }
 
-#number-input::-webkit-inner-spin-button { 
+#number-input::-webkit-inner-spin-button {
   appearance: none;
 }
 
@@ -192,6 +193,8 @@ body {
   overflow-y     : hidden;
 
 }
+
+
 
 #title-text {
   color      : white;
@@ -259,7 +262,7 @@ body {
   flex-wrap      : wrap;
   justify-content: center;
   text-align     : center;
-  padding-bottom: 30px;
+  padding-bottom : 30px;
 }
 
 .sub-text {
@@ -269,17 +272,16 @@ body {
 }
 
 .list-item {
-  width      : 40px;
-  height     : 40px;
-  list-style : none;
-  color      : white;
-  font-size  : 2rem;
-  font-family: 'Supermercado One', sans-serif;
-  padding    : 10px;
-  border     : solid 2px white;
-  margin     : 5px;
+  width           : 40px;
+  height          : 40px;
+  list-style      : none;
+  color           : white;
+  font-size       : 2rem;
+  font-family     : 'Supermercado One', sans-serif;
+  padding         : 10px;
+  border          : solid 2px white;
+  margin          : 5px;
   /* border-radius: 50%; */
-  
 }
 
 .one-ago {
@@ -302,11 +304,107 @@ body {
 
 
 .recent-color {
-  background-color: #ffa7bd;
+  background-color: #4394B0;
   animation       : scaling 1s;
   z-index         : 10;
 }
 
 .two-ago {
   background-color: #4394B0
+}
+
+
+@media screen and (max-width:768px) {
+
+
+  .main-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .called-wrapper {
+    justify-content: center;
+    text-align     : center;
+    margin         : auto;
+    width          : 96vw;
+  }
+
+  #called-list {
+    margin         : 0;
+    padding        : 0;
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: center;
+    text-align     : center;
+    padding-bottom : 20px;
+
+    margin-top: -50px;
+  }
+
+  .list-item {
+
+    width     : 10px;
+    height    : 10px;
+    list-style: none;
+    color     : white;
+    font-size : 1rem;
+    font-family: 'Supermercado One',
+      sans-serif;
+    padding         : 10px;
+    border          : solid 2px white;
+    margin          : 5px;
+    /* border-radius: 50%; */
+    justify-content : center;
+  }
+
+  #generated-number {
+    display: none;
+  }
+
+  .range-selector-wrapper {
+
+    display        : flex;
+    justify-content: center;
+    text-align     : center;
+    margin         : auto;
+  }
+
+  .range-selector {
+    display        : flex;
+    width          : 90vw;
+    height         : 90vh;
+    opacity        : .8;
+    border-radius  : 20px;
+    bottom         : 0;
+    flex-wrap      : wrap;
+    justify-content: center;
+    margin         : 0;
+    margin-top     : 10%;
+    text-align     : center;
+  }
+
+  .game-size-item {
+    width              : 100px;
+    height             : 50px;
+    padding            : 20px;
+    margin             : 10px;
+    text-align         : center;
+    transition-duration: .3s;
+  }
+
+  .game-size-item h3 {
+    font-size: 2rem;
+  }
+
+  #game-size-list {
+    display        : flex;
+    flex-wrap      : wrap;
+    width          : 100%;
+    justify-content: center;
+    padding        : 0;
+  }
+
+  .btn-wrapper {
+    padding-top: 10%;
+  }
+
 }

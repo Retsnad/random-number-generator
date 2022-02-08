@@ -12,6 +12,7 @@ const gameSelector = document.getElementById('game-selector');
 const shortGameBtn = document.getElementById('short-game-btn');
 const mediumGameBtn = document.getElementById('medium-game-btn');
 const longGameBtn = document.getElementById('long-game-btn');
+const customGameBtn = document.getElementById('custom-game-btn');
 
 //a soon-to-be array of numbers
 let numbers = [];
@@ -24,15 +25,14 @@ let toggle = false;
 let audioToggle = true;
 let gameSize = 0;
 
-
 shortGameBtn.addEventListener('click', shortGame);
 mediumGameBtn.addEventListener('click', mediumGame);
 longGameBtn.addEventListener('click', longGame);
+customGameBtn.addEventListener('click', customGame);
 
 document.getElementById('confirm').addEventListener('click', startGame);
 
 function startGame() {
-
   if (gameSize == 25) {
     shortGame();
     filledInModeSetup();
@@ -42,18 +42,15 @@ function startGame() {
   } else if (gameSize == 75) {
     longGame();
     filledInModeSetup();
-  } 
-  else {  
-    if(document.getElementById('number-input').value > 10) {
+  } else {
+    if (document.getElementById('number-input').value > 10 && document.getElementById('number-input').value <= 100) {
       gameSize = document.getElementById('number-input').value;
-      filledInModeSetup();}
-      else {
-        document.getElementById('game-size-warning').classList.toggle('hide');
-      }
+      customGame();
+      filledInModeSetup();
+    } else {
+      document.getElementById('game-size-warning').classList.toggle('hide');
     }
-  
-  
-
+  }
 }
 
 function shortGame() {
@@ -61,6 +58,7 @@ function shortGame() {
   shortGameBtn.classList.add('game-size-item-selected');
   mediumGameBtn.classList.remove('game-size-item-selected');
   longGameBtn.classList.remove('game-size-item-selected');
+  customGameBtn.classList.remove('game-size-item-selected');
 }
 
 function mediumGame() {
@@ -68,12 +66,21 @@ function mediumGame() {
   shortGameBtn.classList.remove('game-size-item-selected');
   mediumGameBtn.classList.add('game-size-item-selected');
   longGameBtn.classList.remove('game-size-item-selected');
+  customGameBtn.classList.remove('game-size-item-selected');
 }
 function longGame() {
   gameSize = 75;
   shortGameBtn.classList.remove('game-size-item-selected');
   mediumGameBtn.classList.remove('game-size-item-selected');
   longGameBtn.classList.add('game-size-item-selected');
+  customGameBtn.classList.remove('game-size-item-selected');
+}
+function customGame() {
+  gameSize = document.getElementById('number-input').value;
+  shortGameBtn.classList.remove('game-size-item-selected');
+  mediumGameBtn.classList.remove('game-size-item-selected');
+  longGameBtn.classList.remove('game-size-item-selected');
+  customGameBtn.classList.add('game-size-item-selected');
 }
 
 //volume button stuff
